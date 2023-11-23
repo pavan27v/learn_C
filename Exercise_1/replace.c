@@ -27,7 +27,7 @@ void subst(char *str, char *pattern , char *replacement)
 {
     
     char *local_str = NULL;
-    char *local_replace = NULL;
+    char *local_replace = NULL
     char *local_pattern = NULL;
     int flag = 0;
     local_str  = str;
