@@ -1,7 +1,7 @@
 #include<stdio.h>
 void interactive_mode()
 {
-  printf("in Mode");
+  printf("in Mode\n");
 }
 void file_mode(filename)
 char *filename;
