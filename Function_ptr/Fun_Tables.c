@@ -50,7 +50,7 @@ int main()
     scanf("%d",&num1);
     scanf("%d",&num2);
     
-    result = (*fun_ptr[choice])(num1 , num2);
+    result = (*fun_ptr[choice ])(num1 , num2);
 
     printf("result = %d", result);
 
