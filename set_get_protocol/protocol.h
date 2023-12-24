@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-
+#define  ENABLE_CRC_COMPUTE  0
 typedef enum opcode {
     GET = 0,
     SET = 1,
@@ -81,9 +81,9 @@ void crcInit(void) {
 
 uint16_t crcCompute(unsigned char *message, unsigned int nBytes) {
     
-    printf("nbytes = %d\n", nBytes);
+    //printf("nbytes = %d\n", nBytes);
     
-    printf("message = %p\n",message);
+    //printf("message = %p\n",message);
     
     
     unsigned int offset;
@@ -91,25 +91,18 @@ uint16_t crcCompute(unsigned char *message, unsigned int nBytes) {
     width remainder = INITIAL_REMAINDER;
 
     for (offset = 0; offset < nBytes; offset++) {
-        printf("offset = %d",offset);
+        //printf("offset = %d",offset);
         byte = (remainder >> (WIDTH - 8)) ^ message[offset];
         
-         printf("message[%d] = %d\n", offset,message[offset]);
+        // printf("message[%d] = %d\n", offset,message[offset]);
           
-        printf("byte = %d\n", byte);
+       // printf("byte = %d\n", byte);
         remainder = crcTable[byte] ^ (remainder << 8);
-        printf("remainder = %hu\n", remainder);
+       // printf("remainder = %hu\n", remainder);
     }
-    
-   
-
-    
-    
-   printf("remainder ^ FINAL_XOR_VALUE = %hu", remainder ^ FINAL_XOR_VALUE);
-    return (remainder ^ FINAL_XOR_VALUE);
-    
-    
-    
+ 
+   //printf("remainder ^ FINAL_XOR_VALUE = %hu", remainder ^ FINAL_XOR_VALUE);
+    return (remainder ^ FINAL_XOR_VALUE);    
 }
 
 void set_opcode(uint8_t opc) {
@@ -145,24 +138,24 @@ void set_chksum(uint16_t chksum) {
 
 uint16_t calculate_chksum() {
     
-    
-    //return crcCompute((unsigned char *)msg, sizeof(msg_fmt) - sizeof(msg->chksum));
+    #if ENABLE_CRC_COMPUTE
+    return crcCompute((unsigned char *)msg, sizeof(msg_fmt) - sizeof(msg->chksum));
    
+   #else
     uint16_t sum = 0;
     uint8_t *ptr = (uint8_t *)msg;
  
-    printf("uint16_t = %zu\n", sizeof(uint16_t));
-    printf("dif = %zu\n",sizeof(msg_fmt) - sizeof(msg->chksum));
+    //printf("uint16_t = %zu\n", sizeof(uint16_t));
+    //printf("dif = %zu\n",sizeof(msg_fmt) - sizeof(msg->chksum));
     
     
     for (size_t i = 0; i < sizeof(msg_fmt) - sizeof(msg->chksum); ++i) {
-        printf("i = %d\n", ptr[i]);
+    //    printf("i = %d\n", ptr[i]);
         sum += ptr[i];
-        
     }
     
     return ~sum;
-   
+   #endif 
    
 }
 uint8_t create_msg() {
@@ -171,6 +164,7 @@ uint8_t create_msg() {
         return (1);
     } else {
         return (0);
+
     }
 }
 
