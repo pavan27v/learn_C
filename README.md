@@ -19,10 +19,10 @@ The protocol supports the following data types:
  Integer (INT)
  Character (CHAR)
 
-3)Operations
+3) Operations
 SET: Set a value for a specific type.
 GET: Retrieve data.
 
-4)Error Handling
+4) Error Handling
 Implement appropriate error-handling mechanisms for invalid messages or checksum failures.
 
