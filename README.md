@@ -23,6 +23,6 @@ The protocol supports the following data types:
 SET: Set a value for a specific type.
 GET: Retrieve data.
 
-3) Error Handling
+4) Error Handling
 Implement appropriate error-handling mechanisms for invalid messages or checksum failures.
 
