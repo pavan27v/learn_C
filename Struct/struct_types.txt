@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<stdint.h>
+
+//types of structure
+
+
+/*--------1)direct instance of structure-------------------------------*/
+struct{
+    int  part_number;
+    char part_name[100];
+    int  number_of_parts;
+    
+}part;
+/*------------2) struct with tagname---------------------------------*/
+/*--------2a)struct with declaration  -------------------------------*/
+
+struct part{
+    
+    int  part_number;
+    char part_name[100];
+    int  number_of_parts;
+};
+
+
+//  instance can be created 
+struct part Obj ; 
+
+
+
+/*--------2b)struct with instance -------------------------------*/
+
+struct part{
+    
+    int  part_number;
+    char part_name[100];
+    int  number_of_parts;
+}part1,part2;
+
+
+
+/*--------3)struct with typedef(its only declaration -------------*/
+
+typedef struct {
+    
+    int  part_number;
+    char part_name[100];
+    int  number_of_parts;
+}part;
+
+// Alternate name for structure is part 
+// To create instance we can use 
+  part obj1;
+
+
+int main()
+{
+    struct part part1, part2;
+    
+    return 0;
+}
