@@ -1,0 +1,45 @@
+/*********************************************************************************************************
+Building a Multiple-File Program:
+
+
+Compiling:     Each source file in the program must be compiled separately.
+(Header files don’t need to be compiled; the contents of a header file are automatically
+compiled whenever a source file that includes it is compiled.) For
+each source file, the compiler generates a file containing object code. These
+files—known as object files—have the extension .o in UNIX and .obj in
+Windows.
+Linking:    The linker combines the object files created in the previous step—
+along with code for library functions—to produce an executable file. Among
+other duties, the linker is responsible for resolving external references left
+behind by the compiler. (An external reference occurs when a function in one
+file calls a function defined in another file or accesses a variable defined in
+another file.)
+
+
+we have two sorurce file calc.c and stack.c and one header stack.h
+
+
+In calc.c header stack.h is included
+
+and in stack.c header stack.h is included
+
+
+
+
+**********************************************************************************************************/
+
+
+
+$(CC) = gcc
+  
+final:  calc.o stack.o
+	$(CC) calc.o stack.o -o final
+
+calc.o: calc.c stack.h
+	$(CC) -c calc.c
+                
+stack.o: stack.c stack.h
+	$(CC) -c stack.c
+
+clean: 
+	rm *.o final
