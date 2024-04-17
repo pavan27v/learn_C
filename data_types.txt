@@ -1,0 +1,112 @@
+/**************************************************************************************************
+
+data type
+
+
+These data type is always fixed size irrespective of compiler 
+
+short(signed or unsigned) is always 2 bytes
+char(signed or unsigned) is always 1 byte
+long long(signed or unsigned) is always 8 bytes
+
+These are compiler dependent
+
+int and long 
+
+int 2 bytes or 4 bytes
+long is 4 bytes are  8 bytes
+
+
+
+char is just another data type no special meaning
+-128 to 127
+unsined char 0 to 255
+
+variable defintion
+data type + variable name
+
+
+unsigned char cityXtemparature  // variable definiation
+
+cityXtemparature = 20;   // variable initialization
+
+data type seleceted accordng to program logic or need
+
+
+
+
+example 2
+
+sun suface temp 5,505 c
+
+its still unsigned but we cant use uint8 (char) beacoz of range is 0 to 255
+
+we can uint16 or short 
+
+uint16 suntemparature;
+or 
+unsined short  suntemparature;
+suntemparature = 5505;
+
+
+ formate specifer 
+
+
+%d  integer
+
+%c char
+%s group of char terminated \0
+%x hex
+%o ocatal
+
+%u unsigned 
+
+
+
+in printf each formate specifier will have one associated variable
+
+
+
+
+1 byte singned representation
+
+
+8 bits from(0 to 7)
+
+7 th bit used to store magnitude
+
+most significant bit is used to represent the sign of the data 
+1===> negetive
+0 ===> postive
+
+
+magnitude is stored in 2 compilement format is data is negative
+signed data means a dedicated 1 bit is used to encode a sign of the data.
+
+
+
+represent -25 in 1 byte signed data representation
+
+
+ 25 ===>  0000 11001
+2'c ===>  1111 00110
++1  ===>           1
+          1111 00111
+
+          1    110 0111
+          7th  E7          
+
+-25 is represented as  1111 00111
+
+
+seeing to 7th bit 
+compiler decide  its -ve number and does 2'c to arrive at the number 25 
+
+its not 487(511-16-8)
+           (511-24+1)
+           (500 +11 -25)
+          (500-25 + 11)
+          (475 + 1 +11)  ==>487 
+
+ 
+****************************************************************************************************/
