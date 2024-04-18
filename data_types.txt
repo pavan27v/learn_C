@@ -108,5 +108,25 @@ its not 487(511-16-8)
           (500-25 + 11)
           (475 + 1 +11)  ==>487 
 
+
+
+
+short int  or signed short int (-32768 to +32767)
+unsigned short (0 to 65535)
+ 15 14.....................3 2 1 0   (16 bit)
+
+
+size of long and int is decided by compiler being used to generate a code for targeted hardware
+consult comipler user manual to understant 
+
+
+variable name exitsts for programming convenience and does not exist post compilatation compilation,only its associated
+memory location address does
+
+varaible declartaion some time called variable definition.
+
+
+
+
  
 ****************************************************************************************************/
