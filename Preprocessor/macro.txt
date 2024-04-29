@@ -1,0 +1,104 @@
+pre processor Directives
+
+In c programming pre-processor directives are used to affect compile time setting.
+
+pre processor directives also used to create macros used as a textual replacement for numbers and other things
+pre processor directives begin with the # symbol
+they are resloved or taken cared during the pre-processor stage of compilation.
+
+
+objectives                             syntax of pre-processor directives
+Macros                                  #define <identifier>  <value> used for textual replacement
+                                         eg: #define MAX_RECORD 10
+										 
+file inclusion                          #include<standard lib file names>  #include"user defined file names" used for file inclusion
+
+conditional compilation                 #ifdef, #endif, #if, #else, #ifndef, #undef (used to direct the compiler about code compilation)
+others                                  #pragma #error
+
+
+
+
+
+#include <stdio.h>
+#define MAX_RECORD 10
+
+#define XTAL_SPEED 8000000UL
+int main()
+{
+   char  MAX_RECORD  = 12;
+    
+    printf("%d",MAX_RECORD);
+
+    return 0;
+}
+1) macro name is identifier 
+2) no semicolon to termiante
+3) macro name are caps as standard to distinguish from variable name
+4) 8000000UL is allowed to tell its uinsigned long value
+5) macros names dont consume space during compile or run time like variables
+6) while using function like macros or macro along with any operators , always surround the operand with parentheses
+
+
+
+
+function like macro
+
+
+To define function like macro use the same '#define' directive, but put a pair of parentheses immediately after macro name
+
+
+
+conditional compilation
+
+#if 
+#else
+#ifdef
+#endif
+#undef
+#ifndef
+
+
+
+these directives help you to include or exclude individual code blocks based on various conditionset in program
+
+
+#if and #endif directives
+
+syntax
+#if <constant expression>
+
+#endif
+
+
+Example
+
+#if 0
+
+//code block
+
+#endif
+
+This directive checks whether the constant expression is zero or non zero value.
+if constant is 0, then code block 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

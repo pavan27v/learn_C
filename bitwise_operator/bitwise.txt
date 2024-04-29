@@ -1,0 +1,79 @@
+Associtivity and precedence table short cuts
+
+1) The bitwise shift operators have lower precedence than the arithmetic operators,
+which can cause surprises. For example, i << 2 + 1 means i << (2 + 1), not
+(i << 2) + 1.
+
+
+2) Each of the ~, &, ^, and | operators has a different precedence:
+
+Symbol            Meaning
+~              bitwise complement
+&              bitwise and
+^              bitwise exclusive or
+|              bitwise inclusive or
+
+
+Highest: ~
+         &
+         ^
+Lowest:  |
+
+
+~ HIGhest AND | is Lowest
+
+
+example with out parentheses
+i & ~j | k  ===========> compiler will modify using parentheses    
+
+ i & (~j) | K
+ 
+ (i & (~j)) | k
+ 
+ ((i & (~j)) | k)
+ 
+ 
+ i ^ j & ~k ==========> compiler will modify using parentheses 
+ 
+ i ^ j & (~k)
+ i ^ (j & (~k))
+ (i ^ (j & (~k)))
+ 
+ 
+3)The precedence of &, ^, and | is lower than the precedence of the relational and
+equality operators. Consequently, statements like the following one won’t have the
+
+desired effect:
+if (status & 0x4000 != 0) …
+
+
+Instead of testing whether status & 0x4000 isn’t zero, this statement will
+evaluate 0x4000 != 0 (which has the value 1), then test whether the value of
+status & 1 isn’t zero.
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
