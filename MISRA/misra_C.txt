@@ -1,0 +1,171 @@
+Rule CCode_Style_006: Definition of Variables
+Instruction Only one variable shall be defined in a single line. A multi line or comma separated definition is not
+allowed.
+Definitions of variables are located in C files and script files. This rule will help to keep lines with definitions short and
+clear. The usage of comma operator is generally restricted,
+
+
+Not allowed:
+uint16 a_u16, c_u16;
+Allowed:
+uint16 a_u16;
+uint16 c_u16;
+
+
+Rule CCode_Style_007: Initialization of Arrays and Structures
+Instruction Braces shall be used to indicate and match the structure in a non−zero initialization of arrays and
+structures.:
+
+
+
+Examples:
+uint16 x[3][2] = { 1, 2, 3, 4, 5, 6 }; /* Not OK, braces are missing */
+uint16 y[3][2] = {{1, 2}, {3, 4}, {5, 6}}; /* OK */
+uint16 z[3][2] = { 0 }; /* OK, zero initialisation */
+uint16 p[5] = { 1, 2, 3 }; /* Not OK, incomplete initialisation */
+
+
+
+Rule CCode_Style_008: Operators and Whitespaces
+Instruction Mathematical, logical, comparison and conditional operators shall be embedded in whitespaces. This
+rule does not apply to brackets and operators like !, ++ and −−.
+This rule will ensure a better readability for mathematical and logical terms.
+Examples:
+result_u16 = (a_u8 * b_u8) + c_u16;
+if (var1 && var2)
+...
+if (!var1)
+...
+result = (value1 >= value2) ? value1: value2;
+result ˆ= value1;
+result++;
+
+
+
+
+Rule CCode_Style_009: Nested Preprocessor Commands
+Instruction Nested preprocessor commands should use a special form of indentation.
+It could be confusing to use many preprocessor conditions which introduce new indentation levels. Each new level shall
+have an additional whitespace as indentation between the # and the command. The # character shall always be the first
+character of a pre−processor command line. Following example will show the principle.
+#if (...) <-- First level
+ ....
+# if (...) <-- Second level (one whitespace)
+...
+# ifdef (...) <-- Third level (two whitespaces)
+...
+# endif <-- Third level (two whitespaces)
+# else <-- Second level (one whitespace)
+...
+# endif <-- Second level (one whitespace)
+#endif <-- First level
+ˆ # is on the same line
+
+
+Rule CCode_Style_010: Display History Information
+Instruction To display history information from the SCM system a special comment block shall be placed at end of a
+file.
+The SCM(Source Code Management)  system BASD provides history information which shall be displayed in a C or header file. Because the history
+information could be long (because every version of a file can have its own history information) it shall be placed at the
+end of a file. To do that use the comment block shown in Figure 17 .
+Figure 17 Comment block for SCM History information/*<BASDKey>
+**********************************************************************************************************************
+* $History___:$
+**********************************************************************************************************************
+</BASDKey>*/
+
+Rule CCode_Style_011: Display Header File Name
+Instruction The name of a header file should be named within a comment at the end of each header file.
+For an easier handling of processed files the name of a header file should be placed at end of a header file with a special
+comment. This will help to find the end of a header in a processed file listing. Than it is clear from which point a header
+starts (can be identified by the module header of [CCode_Style_002] ) and a header ends (identified by the comment of
+this rule).
+Figure 18 Comment block for header name/*<BASDKey>
+**********************************************************************************************************************
+* End of header file: $Name______:$
+**********************************************************************************************************************
+</BASDKey>*/
+Rule CCode_Style_012: New Line at End of File
+Instruction Each c file and header shall end with a new line to avoid compiler warnings.
+Some compilers are sensible in case that a c or header file ends with no new line. A compiler warning (e.g. "no newline
+at end of file") can occur. To avoid this problem a new line shall be placed explicitly.
+Rule CCode_Style_013: Avoiding of trailing spaces
+Instruction Trailing spaces shall be avoided.
+Trailing spaces are white spaces at the end of a line. These white spaces cannot be seen and have no technical effect.
+Some editors have the feature to suppress trailing spaces. If possible that feature shall be activated
+
+
+3.6.2 Block Style
+Rule CCode_BlockStyle_001: Common Block Style Layout
+Instruction A block style layout shall be used for all functions and type definitions and all instruction blocks like
+for−loop, if−else, do−while, while and switch−case. The statement forming the body of an instruction shall be a
+compound statement. 
+
+ Function: for loop: switch-case:
+void MyModule_Func(void) for (I = 0; I < 10; I++) switch (var)
+{ { {
+... ... case 1:
+} } {
+...
+Typedef definition: do-while: }
+typedef struct do break;
+{ {
+uint8 a_u8; ... case 2:
+uint8 b_u8; } while (a > b); {
+} MyStruct_tst; ...
+}
+if-else: while: break;
+if (a > b) while (a > b)
+{ { default:
+... ... {
+} } ...
+else if (b > c) }
+{ break;
+... }
+}
+else
+{
+...
+}
+
+
+
+Rule CCode_BlockStyle_002: Block Brackets are Single Characters in a Line
+Instruction The beginning of a block "{" and the end of a block "}" shall be at a new line and shall be the only character
+in this line (Except the character indicates the end of a structure definition or is followed by a while command. Here
+the name of the structure or the while command can stand after the end of block bracket. Additional comments are
+allowed.) After a block a new line should be entered (Except the block ends before an else or break command.).
+Example:
+void MyModule_Func(void)
+{ <-- Single character in a new line (or a comment is allowed)
+/* Instructions */
+} <-- Single character in a new line (or a comment is allowed)
+<-- New line after block
+It is not allowed to write it in following way:
+void MyModule_Func(void) {
+}
+
+
+* Instructions */
+}
+Rule CCode_BlockStyle_003: Horizontal Position of Brackets of Blocks
+Instruction "{" and "}" shall be placed at the same horizontal position.
+Example:
+void MyModule_Func(void)
+{
+/* Instructions */
+}
+ˆ Same horizontal position
+Rule CCode_BlockStyle_004: Instruction Block with One Instruction is a Block
+Instruction If an instruction block only contains one instruction, the block shall nevertheless be embraced with "{"
+and "}".
+Example:
+if (a > b)
+{
+a = b; <-- Only one instruction is still enclosed with curly brackets.
+}
+It is not allowed to write it in following way:
+if (a > b) { a = b }
+
+
+:wq! 
