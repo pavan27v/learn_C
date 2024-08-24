@@ -23,15 +23,16 @@ void Question1(void)
 	char c[4];
 }fc1;
 
-void Question2( )
+/* void Question2( )
 {
   fc1.f = 123.4;
   fc1.c[0] = 'A';
    fc1.c[2] = 'B';
     fc1.c[3] = 'C';
     printf("value of f = %f , string = %s \n", fc1.f,  &fc1.c[0]);
-}*/
-struct{
+}
+
+/*struct{
   int *ip;
   char *cp;
   float *fp;
@@ -67,13 +68,26 @@ void Question3( )
    s3.c = (* ((char *)s2.v2)) + 1;
    s3.f = (*s1.fp) + (* ((float *)s2.v3)) + 1;
    printf(" The values are i = %d , f = %f , c = %c\n", *s1.ip ,*s1.fp , *s1.cp);
+} */
+void Question4(void)
+{
+  static char cArr[16];
+  int i = 0;
+  while(i<5)
+  {
+
+     cArr[i] = i + 'A';
+     i++;
+  }
+  printf("Q4 = the string is %s\n", cArr);
+
 }
 
 int main()
 {
  //   Question1( );
     //Question2( );
-     Question3( );
-
+    // Question3( );
+    Question4( );
 
 }
